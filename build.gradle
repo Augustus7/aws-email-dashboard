@@ -1,0 +1,12 @@
+group = 'renegades'
+version = '0.0.1'
+
+subprojects {
+
+
+}
+
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.8'
+}
