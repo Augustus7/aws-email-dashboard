@@ -1,0 +1,8 @@
+---
+language: java
+script: gradle clean build assemble
+jdk:
+  - oraclejdk7
+branches:
+  only:
+  - master
