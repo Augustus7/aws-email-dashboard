@@ -11,4 +11,4 @@ routeMatcher.get('/test2', function(req){
 	req.response.end("test2 returned");
 	});	
 
-server.requestHandler(routeMatcher).listen(8080, 'localhost/aws');
+server.requestHandler(routeMatcher).listen(8080, 'localhost');
