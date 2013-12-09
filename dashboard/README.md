@@ -1,1 +1,2 @@
-README.md
+# AWS Email Dashboard Frontend
+
