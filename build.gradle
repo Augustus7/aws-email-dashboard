@@ -15,6 +15,12 @@ ext {
   scalaVersion = "2.10.2"
 }
 
+dependencies {
+    // Scala
+    compile("org.scala-lang:scala-library:$scalaVersion")
+    compile("org.scala-lang:scala-reflect:$scalaVersion")
+}
+
 subprojects {
 
 	apply plugin: 'java'
