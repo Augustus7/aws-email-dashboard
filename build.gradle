@@ -12,14 +12,9 @@ ext {
 	camelVersion = "2.12.2"
 	junitVersion = "4.11"
 
-  scalaVersion = "2.10.2"
+  scalaVersion = "2.10.3"
 }
 
-dependencies {
-    // Scala
-    compile("org.scala-lang:scala-library:$scalaVersion")
-    compile("org.scala-lang:scala-reflect:$scalaVersion")
-}
 
 subprojects {
 
