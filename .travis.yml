@@ -1,6 +1,8 @@
 ---
-language: java
+language: scala
 script: gradle clean build assemble
+scala:
+  - 2.10.2
 jdk:
   - oraclejdk7
 branches:
