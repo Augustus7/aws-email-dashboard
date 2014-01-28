@@ -4,23 +4,36 @@ version = '0.0.1-SNAPSHOT'
 ext.isReleaseVersion = !version.endsWith("-SNAPSHOT")
 
 ext {
-    vertxVersion =  "2.1M2"
-    vertxtestVersion = "2.0.0-final"
+    vertxVersion =  "2.1M3"
+    vertxtestVersion = "2.0.2-final"
+	
+	vertxScalaVersion = "0.3.0"
+	
+	camelVersion = "2.12.2"
+	junitVersion = "4.11"
 }
-
-sourceCompatibility = '1.7'
-targetCompatibility = '1.7'
 
 subprojects {
 
 	apply plugin: 'java'
-	apply plugin: 'idea'
+	apply plugin: 'scala'
 	apply plugin: 'eclipse'
 
 
 	repositories {
-		mavenCentral()
+		maven {
+			name = 'utencil-release'
+			url 'http://utensil.momentum.co.za:8081/artifactory/libs-release'
+			credentials {
+				username = "gradle"
+				password = "gradle"
+			}
+		}
 	}
+	
+//	repositories {
+//		mavenCentral()
+//	}
 
 }
 

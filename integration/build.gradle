@@ -1,0 +1,28 @@
+
+
+dependencies {
+  compile 'io.vertx:vertx-core:'+vertxVersion
+  compile 'io.vertx:vertx-hazelcast:'+vertxVersion
+  compile 'io.vertx:vertx-platform:'+vertxVersion
+  
+  compile 'io.vertx:lang-scala:'+vertxScalaVersion
+  
+  compile 'org.apache.camel:camel-core:'+ camelVersion
+  compile 'org.apache.camel:camel-aws:'+ camelVersion
+  compile 'org.apache.camel:camel-vertx:'+ camelVersion
+  compile 'org.apache.camel:camel-scala:'+ camelVersion
+  
+  testCompile 'junit:junit:'+ junitVersion
+  testCompile 'io.vertx:testtools:' + vertxtestVersion
+}
+
+project.ext.moduleName = "me.bayes~integration~0.0.1"
+
+
+defaultTasks = ['assemble']
+
+test {
+
+
+}
+

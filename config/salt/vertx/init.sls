@@ -24,30 +24,12 @@ Create symbolic link:
     - require:
       - cmd: Run unzip vertx
 
-/opt/vertx/current/bin/vertxmod.sh:
+/etc/init/vertx.conf:
   file:
     - managed
     - user: root
     - group: root
     - mode: 777
-    - source: salt://vertx/files/vertxmod.sh
+    - source: salt://vertx/files/vertx.conf
     - require:
       - cmd: Create symbolic link
-
-/opt/vertx/current/bin/vertx-service.sh:
-  file:
-    - managed
-    - user: root
-    - group: root
-    - mode: 777
-    - source: salt://vertx/files/vertx-service.sh
-    - require:
-      - cmd: Create symbolic link
-
-
-Create service symbolic link:
-  cmd.run:
-    - name: ln -s /opt/vertx/current/bin/vertx-service.sh /etc/init.d/vertx
-    - onlyif: if [ -f "/etc/init.d/vertx" ]; then false; else true; fi
-    - require:
-      - cmd: Run unzip vertx
