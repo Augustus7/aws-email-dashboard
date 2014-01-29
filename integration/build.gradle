@@ -16,6 +16,7 @@ dependencies {
   compile 'org.apache.camel:camel-scala:'+ camelVersion
   
   testCompile 'junit:junit:'+ junitVersion
+  testCompile 'org.apache.camel:camel-test:'+ camelVersion
   testCompile 'io.vertx:testtools:' + vertxtestVersion
 }
 

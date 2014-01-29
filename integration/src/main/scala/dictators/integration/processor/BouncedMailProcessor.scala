@@ -27,7 +27,7 @@ class BouncedMailProcessor(val vertx: Vertx) extends Processor {
 
 	def process(exchange: Exchange) {
 	 
-	  print("hello")
+	  print(exchange.getIn().getBody())
 	  
 	}
   
