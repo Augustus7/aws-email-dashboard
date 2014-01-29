@@ -41,7 +41,7 @@ class App extends Verticle {
       msg reply msg.body
     })
     
-    //camelContext.addRoutes(new CollectBouncedMailRoute(vertx));
+    camelContext.addRoutes(new CollectBouncedMailRoute(vertx));
     
     camelContext start
   }
