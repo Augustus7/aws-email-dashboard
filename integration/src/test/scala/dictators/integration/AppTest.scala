@@ -28,7 +28,7 @@ class AppTest extends TestVerticle {
 	def testAppContextLoad(): Unit = {
 	  
 	   val p = Promise[Unit]
-	    container.deployVerticle("scala:dictators.integration.App", Json.obj(), 1, {
+	    container.deployVerticle("scala:dictators.integration.App", Json.obj("aws-ses-bounces" -> Json.obj("amazonSQSClient" -> "test")), 1, {
 	      case Success(deploymentId) => p.success()
 	    		  vertx.eventBus.send("dictator.integration.echo", Json.obj("echo" -> "test"), { msg: Message[JsonObject] =>
 				      testComplete()
