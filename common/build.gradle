@@ -1,9 +1,4 @@
-
-
 dependencies {
-
-  compile project(path: ":common")
-
   compile 'io.vertx:vertx-core:'+vertxVersion
   compile 'io.vertx:vertx-hazelcast:'+vertxVersion
   compile 'io.vertx:vertx-platform:'+vertxVersion
@@ -19,7 +14,6 @@ dependencies {
   testCompile 'io.vertx:testtools:' + vertxtestVersion
 }
 
-project.ext.moduleName = "dictators~integration~0.0.1"
 
 
 defaultTasks = ['assemble']

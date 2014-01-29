@@ -1,2 +1,1 @@
-include "integration"
-include "engine"
+include "common","integration","engine"
