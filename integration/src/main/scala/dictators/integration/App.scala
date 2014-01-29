@@ -24,6 +24,7 @@ import org.vertx.java.core.json.JsonObject
 import org.apache.camel.impl.DefaultCamelContext
 import dictators.integration.processor.BouncedMailProcessor
 import dictators.integration.routes.CollectBouncedMailRoute
+import org.vertx.scala.core.eventbus.MessageData
 
 /**
  * This script will start the server and create a camel context with
@@ -36,8 +37,8 @@ class App extends Verticle {
   override def start(): Unit = {
     super.start
     
-    vertx.eventBus registerHandler("dictator.integration.echo", { msg: Message[String] =>
-      msg reply msg 
+    vertx.eventBus registerHandler("dictator.integration.echo", { msg: Message[JsonObject] =>
+      msg reply msg.body
     })
     
     //camelContext.addRoutes(new CollectBouncedMailRoute(vertx));

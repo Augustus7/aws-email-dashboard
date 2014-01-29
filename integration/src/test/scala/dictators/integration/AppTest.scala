@@ -30,15 +30,14 @@ class AppTest extends TestVerticle {
 	   val p = Promise[Unit]
 	    container.deployVerticle("scala:dictators.integration.App", Json.obj(), 1, {
 	      case Success(deploymentId) => p.success()
+	    		  vertx.eventBus.send("dictator.integration.echo", Json.obj("echo" -> "test"), { msg: Message[JsonObject] =>
+				      testComplete()
+				  })
 	      case Failure(ex) => p.failure(ex)
+	      	testComplete()
 	    }: Try[String] => Unit)
-	    p.future
-	  
-	    vertx.eventBus.send("dictator.integration.echo", Json.obj("echo" -> "test"), { msg: Message[JsonObject] =>
-	      print(msg.body.toString())
-	      testComplete()
-	    })
 	    
+	    p.future
 	}
 
 }
