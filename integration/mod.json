@@ -1,5 +1,32 @@
 // Example JSON config file
 
 {
-  "worker": "true"
+  "worker": "true",
+   
+  "aws-ses-bounces" : {
+  
+	  "amazonSQSClient" : "",
+	  "accessKey" : "",
+	  "secretKey" : "",
+	  "amazonSQSEndpoint" : "",
+	  "attributeNames" : "",
+	  "defaultVisibilityTimeout" : "",
+	  "deleteAfterRead" : "",
+	  "deleteIfFiltered" : "",
+	  "maxMessagesPerPoll" : "",
+	  "visibilityTimeout" : "",
+	  "messageVisibilityTimeout" : "",
+	  "extendMessageVisibility" : "",
+	  "maximumMessageSize" : "",
+	  "messageRetentionPeriod" : "",
+	  "policy" : "",
+	  "delaySeconds" : "",
+	  "waitTimeSeconds" : "",
+	  "receiveMessageWaitTimeSeconds" : "",
+	  "queueOwnerAWSAccountId" : "",
+	  "region" : ""
+	  }
+  
+  
+  
 }

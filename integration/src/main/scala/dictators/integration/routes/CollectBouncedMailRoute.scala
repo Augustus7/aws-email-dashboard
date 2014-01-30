@@ -19,6 +19,7 @@ import org.apache.camel.scala.dsl.builder.RouteBuilder
 import org.vertx.scala.core.Vertx
 import dictators.integration.processor.BouncedMailProcessor
 import dictators.routes.Address._
+import org.vertx.java.core.json.JsonObject
 
 
 /**
@@ -28,8 +29,19 @@ import dictators.routes.Address._
  * @author Kevin Bayes
  * @since 1.0.0
  */
-class CollectBouncedMailRoute(val vertx: Vertx) extends RouteBuilder {
+class CollectBouncedMailRoute(val vertx: Vertx, val json: JsonObject) extends RouteBuilder {
   
-  ("aws-sqs://" + SQS_BOUNCED_EMAIL) routeId "sesbouncedemailroute" process(new BouncedMailProcessor(vertx)) to ("vertx:" + BOUNCED_EMAIL_QUEUE)
+  var amazonSQSEndpoint = "aws-sqs://" + SQS_BOUNCED_EMAIL + "?"
+  val bounceConfig = json.getObject("aws-ses-bounces")
+  val configNames = bounceConfig.getFieldNames()
+  val nameIterator = configNames.iterator()
+    
+  while (nameIterator.hasNext()) {
+    val fieldName = nameIterator next()
+	amazonSQSEndpoint = amazonSQSEndpoint + fieldName + "=" + bounceConfig.getString(configNames.iterator().next()) + "&";
+  }
+  amazonSQSEndpoint = amazonSQSEndpoint.substring(0, amazonSQSEndpoint.length() - 1)
+  
+  (amazonSQSEndpoint) routeId "sesbouncedemailroute" process(new BouncedMailProcessor(vertx)) to ("vertx:" + BOUNCED_EMAIL_QUEUE)
 
 }
