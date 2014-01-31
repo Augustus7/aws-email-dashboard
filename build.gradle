@@ -27,22 +27,10 @@ subprojects {
     compile("org.scala-lang:scala-library:$scalaVersion")
     compile("org.scala-lang:scala-reflect:$scalaVersion")
   }
-
-
-	repositories {
-		maven {
-			name = 'utencil-release'
-			url 'http://utensil.momentum.co.za:8081/artifactory/libs-release'
-			credentials {
-				username = "gradle"
-				password = "gradle"
-			}
-		}
-	}
 	
-//	repositories {
-//		mavenCentral()
-//	}
+	repositories {
+		mavenCentral()
+	}
 
 }
 
