@@ -25,14 +25,20 @@ import org.apache.camel.impl.DefaultCamelContext
 import dictators.integration.processor.BouncedMailProcessor
 import dictators.integration.routes.CollectBouncedMailRoute
 import org.vertx.scala.core.eventbus.MessageData
+import com.amazonaws.auth.AWSCredentials
+import com.amazonaws.services.sqs.AmazonSQSClient
+import org.apache.camel.CamelContext
+import org.apache.camel.impl.JndiRegistry
+import com.amazonaws.auth.BasicAWSCredentials
+import com.amazonaws.services.sqs.AmazonSQS
+import com.amazonaws.regions.Region
+import com.amazonaws.regions.Regions
 
 /**
  * This script will start the server and create a camel context with
  * the relevant routes.
  */
-class App extends Verticle {
-  
-  val camelContext = new DefaultCamelContext()
+class App(var camelContext: CamelContext = null) extends Verticle {
   
   override def start(): Unit = {
     super.start
@@ -41,7 +47,28 @@ class App extends Verticle {
       msg reply msg.body
     })
     
-    camelContext.addRoutes(new CollectBouncedMailRoute(vertx, container.config));
+    container.config.getString("bounceCollectionMethod") match {
+	  case "SQS" => initializeCamel()
+	}
+    
+  }
+  
+  /*
+   * Initialize the camel context
+   */
+  def initializeCamel() = {
+    camelContext = new DefaultCamelContext()
+    
+    var config = container.config.getObject("aws-ses-bounces");
+    
+    val awsCredentials: AWSCredentials = new BasicAWSCredentials(config.getString("accessKey"), config.getString("secretKey"))
+    val client: AmazonSQS = new AmazonSQSClient(awsCredentials)
+    client.setRegion(Region.getRegion(Regions.valueOf(config.getString("accessKey"))));
+    
+    var registry = camelContext.getRegistry().asInstanceOf[JndiRegistry]
+    registry.bind("amazonSQSClient", client)
+    
+    camelContext.addRoutes(new CollectBouncedMailRoute(vertx, container.config))
     
     camelContext start
   }

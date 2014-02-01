@@ -25,10 +25,6 @@ import org.vertx.scala.core.Vertx
  */
 class BouncedMailProcessor(val vertx: Vertx) extends Processor {
 
-	def process(exchange: Exchange) {
-	 
-	  
-	  
-	}
+	def process(exchange: Exchange) { }
   
 }

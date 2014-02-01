@@ -40,6 +40,7 @@ class CollectBouncedMailRoute(val vertx: Vertx, val json: JsonObject) extends Ro
     val fieldName = nameIterator next()
 	amazonSQSEndpoint = amazonSQSEndpoint + fieldName + "=" + bounceConfig.getString(configNames.iterator().next()) + "&";
   }
+  
   amazonSQSEndpoint = amazonSQSEndpoint.substring(0, amazonSQSEndpoint.length() - 1)
   
   (amazonSQSEndpoint) routeId "sesbouncedemailroute" process(new BouncedMailProcessor(vertx)) to ("vertx:" + BOUNCED_EMAIL_QUEUE)
