@@ -8,8 +8,8 @@
   "aws-ses-bounces" : {
   
 	  "amazonSQSClient" : "amazonSQSClient",
-	  "accessKey" : "AKIAIWWOPUXEQ6ZPVACA",
-	  "secretKey" : "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",
+	  "accessKey" : "",
+	  "secretKey" : "",
 	  "attributeNames" : "",
 	  "defaultVisibilityTimeout" : "",
 	  "deleteAfterRead" : "",
