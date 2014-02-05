@@ -1,0 +1,17 @@
+{
+	"modules" : [
+	
+  	{
+  		"name" : "dictators~webapp~0.0.1",
+  		"config" : { }
+  	},
+  	{
+  		"name" : "dictators~engine~0.0.1",
+  		"config" : { }
+  	},
+  	{
+  		"name" : "dictators~integration~0.0.1",
+  		"config" : { }
+  	}
+  ]
+}
