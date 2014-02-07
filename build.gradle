@@ -1,7 +1,4 @@
 group = 'dictators'
-version = '0.0.1'
-
-ext.isReleaseVersion = !version.endsWith("-SNAPSHOT")
 
 subprojects {
 	

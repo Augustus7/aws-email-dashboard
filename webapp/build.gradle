@@ -1,0 +1,9 @@
+apply from: "../gradle/vertx.gradle"
+
+defaultTasks = ['assemble']
+
+test {
+
+
+}
+
