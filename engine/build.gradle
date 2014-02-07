@@ -1,13 +1,4 @@
-
-dependencies {
-  compile 'io.vertx:vertx-core:'+vertxVersion
-  compile 'io.vertx:vertx-hazecast:'+vertxVersion
-  compile 'io.vertx:vertx-platform:'+vertxVersion
-
-  compile 'io.vertx:vertx-testframework:'+vertxtestVersion
-}
-
-
+apply from: "../gradle/vertx.gradle"
 
 defaultTasks = ['assemble']
 

@@ -3,30 +3,18 @@ version = '0.0.1'
 
 ext.isReleaseVersion = !version.endsWith("-SNAPSHOT")
 
-ext {
-    vertxVersion =  "2.1M3"
-    vertxtestVersion = "2.0.2-final"
-	
-	vertxScalaVersion = "0.3.0"
-	
-	camelVersion = "2.12.2"
-	junitVersion = "4.11"
-
-  scalaVersion = "2.10.3"
-}
-
-
 subprojects {
-
+	
 	apply plugin: 'java'
 	apply plugin: 'scala'
 	apply plugin: 'eclipse'
-
-  dependencies {
-    // Scala
-    compile("org.scala-lang:scala-library:$scalaVersion")
-    compile("org.scala-lang:scala-reflect:$scalaVersion")
-  }
+	
+	dependencies {
+		compile "io.vertx:vertx-core:$vertxVersion"
+		compile "io.vertx:vertx-hazelcast:$vertxVersion"
+		compile "io.vertx:vertx-platform:$vertxVersion"
+	}
+  
 	
 	repositories {
 		mavenCentral()
