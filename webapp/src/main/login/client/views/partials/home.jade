@@ -1,0 +1,11 @@
+html
+  body
+    h1 AWS Email Dashboard
+    p *This view is visible to logged in users*
+    table.table.table-striped(data-ng-hide='loading')
+      thead
+        tr
+          th Stats
+      tbody
+        tr(data-ng-repeat='item in stats')
+          td  {{ item.state + ' [' + item.total + "]" }}

@@ -1,0 +1,27 @@
+[
+    {
+        "state": "failed", 
+        "id": 0,
+        "total": 1045
+    }, 
+    {
+        "state": "success", 
+        "id": 1, 
+        "total": 500214
+    }, 
+    {
+        "state": "bounced", 
+        "id": 2,
+        "total": 203
+    }, 
+    {
+        "state": "in-transit", 
+        "id": 3,
+        "total": 2032
+    }, 
+    {
+        "state": "unknown", 
+        "id": 4,
+        "total": 52
+    }
+]
