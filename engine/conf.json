@@ -1,5 +1,134 @@
-// Example JSON config file
-
 {
-  "foo": "bar"
+	"integration_address" : "camel.queue",
+	"engine_address" : "engine.address",
+	
+	"mongo_config" : {
+		"address": "mongo-persistor",
+		"host": "",
+		"port": ,
+		"pool_size": ,
+		"db_name": "entelect_awsSES_DB"
+    },
+
+	"listAllBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {}
+	},
+	
+	"listGeneralBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Permanent",
+				"bounce.bounceSubType" : "General"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"listNoEmailBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Permanent",
+				"bounce.bounceSubType" : "NoEmail"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+
+	"listSuppressedBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Permanent",
+				"bounce.bounceSubType" : "Suppressed"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"listTransientGeneralBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Transient",
+				"bounce.bounceSubType" : "General"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"listMailboxFullBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Transient",
+				"bounce.bounceSubType" : "MailboxFull"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"listMessageToolargeBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Transient",
+				"bounce.bounceSubType" : "MessageToolarge"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"listContentRejectedBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Transient",
+				"bounce.bounceSubType" : "ContentRejected"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"listAttachmentRejectedBounces" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {
+				"bounce.bounceType" : "Transient",
+				"bounce.bounceSubType" : "AttachmentRejected"
+		},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"listBouncesBetweenDates" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {},
+		"sort" : {"bounce.timestamp" : -1}		
+	},								
+	
+	"listLastBounce" : {
+		"action" : "find",
+		"collection" : "bounced_emails",	
+		"matcher" : {},
+		"sort" : {"bounce.timestamp" : -1},
+		"limit" : 1
+	},
+	
+	"listBouncesByRecipients" : {
+		"action" : "find",
+		"collection" : "bounced_emails",
+		"matcher" : {},
+		"sort" : {"bounce.timestamp" : -1}
+	},
+	
+	"insertAwsBounces" : {
+		"action" : "save",
+		"collection" : "bounced_emails",
+		"document" : ""
+		},
+		
+	"dropBounceCollection" : {
+		"action" : "drop_collection",
+		"collection" : "bounced_emails"
+	}	
+	
+	
 }
+

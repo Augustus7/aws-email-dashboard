@@ -1,9 +1,51 @@
 apply from: "../gradle/vertx.gradle"
 
-defaultTasks = ['assemble']
+dependencies {
 
-test {
+  compile project(path: ":common")
 
-
+  compile "io.vertx:vertx-core:$vertxVersion"
+  compile "io.vertx:vertx-hazelcast:$vertxVersion"
+  compile "io.vertx:vertx-platform:$vertxVersion"
+   
+  testCompile "junit:junit:$junitVersion"
+  testCompile "io.vertx:testtools:$vertxtestVersion"
 }
 
+
+defaultTasks = ['assemble']
+
+def configurePom(def pom) {
+  pom.project {
+    name rootProject.name
+    description 'Reads notifications from event bus and stores in mongoDB. Provides API to query collection'
+    inceptionYear '2014'
+    packaging 'jar'
+
+    url 'https://github.com/kevinbayes/aws-email-dashboard'
+
+    developers {
+      developer {
+        id 'Augustus7'
+        name 'Samora Njozela'
+        email 'samora@entelect.co.za'
+      }
+    }
+
+    scm {
+      url 'https://github.com/kevinbayes/aws-email-dashboard'
+    }
+
+    licenses {
+      license {
+        name 'The Apache Software License, Version 2.0'
+        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+        distribution 'repo'
+      }
+    }
+
+    properties {
+      setProperty('project.build.sourceEncoding', 'UTF8')
+    }
+  }
+}

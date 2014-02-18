@@ -1,0 +1,19 @@
+{
+
+  // JavaScript verticle
+  "main": "engine.js",
+
+  // If your module is going to be registered in the Vert.x module registry you will also need the following
+  // mandatory fields
+  "description":"engine module used for interfacing with mongoDB",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Samora Njozela",
+
+  // Optional fields
+  "developers": "Samora Njozela",
+  "keywords": ["engine", "mongo", "aws"],
+  "homepage": "url to your project page",
+
+  "auto-redeploy": true
+
+}
